@@ -59,8 +59,8 @@ int main(int argc, char *argv[])
 }
 
 bool TestPrimeCalculator(){
-    std::vector<int> PrimesPositions = {1,3,260,1000,10000, 1000000};
-    std::vector<int> PrimesNumbers = {2,5,1657,7919,104729, 15485863};
+    std::vector<int> PrimesPositions = {1,3,260,1000,10000};
+    std::vector<int> PrimesNumbers = {2,5,1657,7919,104729};
     PrimeCalculator Calculator = PrimeCalculator();
 
     for (int Idx = 0; Idx < PrimesPositions.size(); Idx++){

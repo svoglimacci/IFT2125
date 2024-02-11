@@ -1,52 +1,43 @@
+#Nom, Matricule
+#Nom, Matricule
+
+# cette classe sert a verifier la validite de l'ensemble des cartes du jeu dans le fichier cartes.txt
+# this class is used to check the validity  of the game cards set in the cartes.txt file
+
+# doit retourner 0 si tout est correct, 1 si le jeu n'est pas optimal selon l'ordre et 2 si le jeu n'est pas valide
+# should return 0 if everything is correct, 1 if the game set is not optimal according to the order and 2 if the game set is invalid
+
+#import os.path
+
 class Verificator():
     def __init__(self):
         pass
 
-    def verify(self, cards_file="cartes.txt", verbose=False):
-        if verbose:
+    def verify(self, cards_file = "cartes.txt", verbose = False):
+        if verbose :
             print("***Verification des cartes***")
+        # TODO
+        # a completer
 
-        # Read cards from the file
-        with open(cards_file, 'r') as file:
-            lines = file.readlines()
+        # test : le nombre de carte devrait être optimal
+        # test : le nombre de symboles par carte est le même pour chaque carte
+        # test : chaque paire de cartes partagent toujours un et un seul symbole en commun
+        # test : le nombre de symbole total devrait être optimal
+            
+        # test: the number of cards should be optimal
+        # test: the number of symbols per card is the same for each card
+        # test: each pair of cards always shares one and only one symbol in common
+        # test: the total number of symbols should be optimal
 
-        # Extract symbols from each card
-        cards = [list(map(int, line.split())) for line in lines[:-1]]  # Exclude the horizon line
-        horizon = list(map(int, lines[-1].split()))
 
-        order = len(cards)
 
-        symbols_per_card = len(cards[0])
+        # succes (0) si le jeu est valide et optimal
+        # avertissement (1) si le jeu de carte n'est pas optimal
+        # erreur (2) si le jeu de carte n'est pas valide
+            
+        # success (0) if the game is valid and optimal
+        # warning (1) if the card game is not optimal
+        # error (2) if the card set is invalid
+        return 0
 
-        # Test: the number of cards and symbols should be optimal
-        optimal_cards = order**2 + order + 1
-        optimal_symbols = symbols_per_card * order
-
-        if len(cards) != optimal_cards or len(horizon) != optimal_symbols + 1:
-            if verbose:
-                print("Erreur: Le nombre de cartes ou de symboles n'est pas optimal.")
-            return 2
-
-        # Test: the number of symbols per card is the same for each card
-        for card in cards:
-            if len(card) != symbols_per_card:
-                if verbose:
-                    print("Erreur: Le nombre de symboles par carte n'est pas le même pour chaque carte.")
-                return 2
-
-        # Test: each pair of cards always shares one and only one symbol in common
-        for i in range(order):
-            for j in range(i + 1, order):
-                common_symbols = set(cards[i]) & set(cards[j])
-                if len(common_symbols) != 1:
-                    if verbose:
-                        print("Erreur: Chaque paire de cartes devrait partager un et un seul symbole en commun.")
-                    return 2
-
-        if verbose:
-            print("Vérification réussie. Le jeu est valide et optimal.")
-
-        # Return 0 if the set is valid and optimal
-        # Return 1 if the set is valid but not optimal
-        # Return 2 if the set is invalid
-        return 0 if optimal_cards == optimal_symbols + 1 else 1
+        
