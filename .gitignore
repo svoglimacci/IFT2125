@@ -1,0 +1,10 @@
+.history
+.vscode
+__pycache__
+.idea
+cmake-build-debug
+*.exe
+*.txt
+images
+results
+exemple output
