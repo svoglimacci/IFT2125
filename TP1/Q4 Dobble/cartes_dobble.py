@@ -1,10 +1,10 @@
-#CE FICHIER NE SERT QU'A APPELER ET TESTER VOTRE CODE. 
-#VOUS NE DEVRIEZ PAS AVOIR BESOIN DE LE MODIFIER, SAUF POUR 
+#CE FICHIER NE SERT QU'A APPELER ET TESTER VOTRE CODE.
+#VOUS NE DEVRIEZ PAS AVOIR BESOIN DE LE MODIFIER, SAUF POUR
 #AJOUTER VOUS-MÊME D'AUTRES TESTS SI VOUS LE VOULEZ.
 #NE PAS REMETTRE SUR STUDIUM. REMETTEZ SEULEMENT dobble_generator.py, dobble_verificator.py et dobble_creator.py
 
 #THIS FILE IS ONLY USED TO CALL AND TEST YOUR CODE.
-#YOU SHOULD NOT HAVE TO MODIFY IT, EXCEPT FOR ADDING 
+#YOU SHOULD NOT HAVE TO MODIFY IT, EXCEPT FOR ADDING
 #NEW CUSTOM TESTS IF YOU WISH TO DO SO.
 #DO NOT SUBMIT ON STUDIUM. ONLY SUBMIT dobble_generator.py, dobble_verificator.py and dobble_creator.py
 
@@ -16,7 +16,7 @@ import os.path
 
 def test_general():
     card_verificator = dobble_verificator.Verificator()
-    success = True 
+    success = True
 
     # test du verificateur de cartes
     # cards verificator test
@@ -38,6 +38,7 @@ def test_general():
     # cards generator test
     cards_file = "cartes.txt"
     order_tests = [(3,0),(4,2),(5,0),(6,2),(7,0)]
+    print("Test du generateur de cartes / Testing cards generator")
     for tested_order, expected_return in order_tests :
         # generation des cartes
         # cards generation
@@ -55,6 +56,7 @@ def test_general():
 
     # test du createur de cartes
     # cards creator test
+    print("Test du createur de cartes / Testing cards creator")
     if os.path.isdir("./results") :
         print("Test reussis / Test passed")
         if os.path.isfile("./results/card1.jpg") :
@@ -74,7 +76,7 @@ if __name__ == '__main__':
     # pour tester le jeu
     # to test the game
     test_general()
-    
+
     # lecture de l'entree de l'utilisateur
     # reading user input
     args = sys.argv[:]

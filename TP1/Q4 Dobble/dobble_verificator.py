@@ -16,28 +16,60 @@ class Verificator():
     def verify(self, cards_file = "cartes.txt", verbose = False):
         if verbose :
             print("***Verification des cartes***")
-        # TODO
-        # a completer
 
-        # test : le nombre de carte devrait être optimal
-        # test : le nombre de symboles par carte est le même pour chaque carte
+        is_optimal = True
+
+        with open(cards_file, "r") as f:
+            cards = f.readlines()
+
+        for i in range(len(cards)):
+            cards[i] = cards[i].split()
+
+        horizon = cards[-1]
+
+        card_count = len(cards)
+
+        order = len(horizon) - 1
+
+
+        optimal_count = order ** 2 + order + 1
+
+        symbol_count = order + 1
+
+        if card_count != optimal_count:
+            is_optimal = False
+
+        for card in cards:
+            if len(card) != symbol_count:
+                return 2
+
+
         # test : chaque paire de cartes partagent toujours un et un seul symbole en commun
+        for i in range(card_count):
+            for j in range(i+1, card_count):
+               common = set(cards[i]).intersection(set(cards[j]))
+               if len(common) != 1:
+                    return 2
+
         # test : le nombre de symbole total devrait être optimal
-            
-        # test: the number of cards should be optimal
-        # test: the number of symbols per card is the same for each card
-        # test: each pair of cards always shares one and only one symbol in common
-        # test: the total number of symbols should be optimal
+        symbols = []
+        for card in cards:
+            for symbol in card:
+                if symbol not in symbols:
+                    symbols.append(symbol)
+        if len(symbols) != optimal_count:
+            is_optimal = False
 
 
 
         # succes (0) si le jeu est valide et optimal
         # avertissement (1) si le jeu de carte n'est pas optimal
         # erreur (2) si le jeu de carte n'est pas valide
-            
-        # success (0) if the game is valid and optimal
-        # warning (1) if the card game is not optimal
-        # error (2) if the card set is invalid
-        return 0
 
-        
+        if is_optimal:
+            return 0
+        else:
+            return 1
+
+
+

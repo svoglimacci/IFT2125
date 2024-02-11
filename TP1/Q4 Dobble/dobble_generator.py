@@ -21,13 +21,13 @@ class Generator():
         # pour ne pas avoir des répétitions de symboles sur les mêmes endroits des cartes
         # random mixing of symbols on the cards,
         # so as not to have repetitions of symbols on the same places on the cards
-            
+
         # TODO
         # a completer
 
 
         # ecriture des cartes dans le fichier cards_file
         # writing cards in the cards_file file
-            
+
         # TODO
         # a completer
