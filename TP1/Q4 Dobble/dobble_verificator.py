@@ -14,6 +14,7 @@ class Verificator():
         pass
 
     def verify(self, cards_file = "cartes.txt", verbose = False):
+
         if verbose :
             print("***Verification des cartes***")
 
@@ -36,9 +37,11 @@ class Verificator():
 
         symbol_count = order + 1
 
+        # test : le nombre de carte devrait être optimal
         if card_count != optimal_count:
             is_optimal = False
 
+        # test : le nombre de symboles par carte est le même pour chaque carte
         for card in cards:
             if len(card) != symbol_count:
                 return 2
@@ -47,16 +50,12 @@ class Verificator():
         # test : chaque paire de cartes partagent toujours un et un seul symbole en commun
         for i in range(card_count):
             for j in range(i+1, card_count):
-               common = set(cards[i]).intersection(set(cards[j]))
-               if len(common) != 1:
+                common = set(cards[i]) & set(cards[j])
+                if len(common) != 1:
                     return 2
 
         # test : le nombre de symbole total devrait être optimal
-        symbols = []
-        for card in cards:
-            for symbol in card:
-                if symbol not in symbols:
-                    symbols.append(symbol)
+        symbols = set.union(*[set(card) for card in cards])
         if len(symbols) != optimal_count:
             is_optimal = False
 
@@ -65,6 +64,7 @@ class Verificator():
         # succes (0) si le jeu est valide et optimal
         # avertissement (1) si le jeu de carte n'est pas optimal
         # erreur (2) si le jeu de carte n'est pas valide
+
 
         if is_optimal:
             return 0

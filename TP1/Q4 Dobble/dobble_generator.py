@@ -10,24 +10,68 @@ class Generator():
     def __init__(self, order = 7):
         self.order = order
 
+    def print_matrix(self, matrix):
+        for row in matrix:
+            print(row)
+        print("\n")
+
     def generate(self, cards_file = "cartes.txt", verbose = False):
         if verbose :
             print("***Generation des cartes***")
 
-        # TODO
-        # a completer
+        n = self.order
 
-        # melange aleatoire des symboles sur les cartes,
-        # pour ne pas avoir des répétitions de symboles sur les mêmes endroits des cartes
-        # random mixing of symbols on the cards,
-        # so as not to have repetitions of symbols on the same places on the cards
-
-        # TODO
-        # a completer
+        #create matrix n x n
+        cards = [[[] for i in range(n)] for j in range(n)]
+        horizon = [[] for i in range(n+1)]
 
 
-        # ecriture des cartes dans le fichier cards_file
-        # writing cards in the cards_file file
 
-        # TODO
-        # a completer
+        symbols = [i+1 for i in range(n**2 + n + 1)]
+
+
+        # rows
+        for i in range(n):
+            symbol = symbols.pop(0)
+            for j in range(n):
+                cards[i][j].append(symbol)
+            horizon[0].append(symbol)
+
+
+        # columns
+        for j in range(n):
+            symbol = symbols.pop(0)
+            for i in range(n):
+                cards[i][j].append(symbol)
+            horizon[-1].append(symbol)
+
+        symbol = symbols.pop(0)
+        for i in range(n+1):
+            horizon[i].append(symbol)
+
+        # diagonals
+        for i in range (n):
+            for j in range(1, n):
+                symbol = symbols.pop(0)
+                horizon[j].append(symbol)
+                for k in range(n):
+                    temp = k * j + i
+                    while temp > n-1:
+                        temp -= n
+                    cards[k][temp].append(symbol)
+
+
+        cards.append(horizon)
+        random.shuffle(cards)
+
+
+        with open(cards_file, "w") as f:
+            for row in cards:
+                for i in range(len(row)):
+                    f.write(" ".join(map(str, row[i])) + "\n")
+
+
+
+
+
+
