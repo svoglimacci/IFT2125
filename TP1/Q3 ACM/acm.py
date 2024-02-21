@@ -1,5 +1,5 @@
-#Nom, Matricule
-#Nom, Matricule
+#Simon Voglimacci Stephanopoli, 20002825
+#Julie Yang, 20239909
 
 import math
 import sys
