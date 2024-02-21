@@ -1,5 +1,5 @@
-#Nom, Matricule
-#Nom, Matricule
+#Simon Voglimacci Stephanopoli, 20002825
+#Julie Yang, 20239909
 
 # cette classe sert a créer les cartes du jeu dans le fichier cartes.txt
 # this class is used to create the game cards in the cartes.txt file
