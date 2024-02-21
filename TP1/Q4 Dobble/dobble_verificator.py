@@ -1,5 +1,5 @@
-#Nom, Matricule
-#Nom, Matricule
+#Simon Voglimacci Stephanopoli, 20002825
+#Julie Yang, 20239909
 
 # cette classe sert a verifier la validite de l'ensemble des cartes du jeu dans le fichier cartes.txt
 # this class is used to check the validity  of the game cards set in the cartes.txt file
